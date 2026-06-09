@@ -1,16 +1,97 @@
-# React + Vite
+# SheCARE
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Empowering Teen Girls Through Health Education and Wellness.
 
-Currently, two official plugins are available:
+## About the Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+SheCARE is a web platform designed to provide accessible health education, menstrual wellness resources, and digital tools for adolescent girls. The project aims to create a safe and informative space where users can learn about menstrual health, track cycles, and access reliable health information.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Health Education Resources
+* Menstrual Wellness Awareness
+* Responsive User Interface
+* Modern Lavender-Pink Theme
+* Easy Navigation
+* Future AI-Powered Health Assistant
+* Future Period Tracking System
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Frontend
+
+* React.js
+* Vite
+* HTML5
+* CSS3
+* JavaScript (ES6+)
+
+### Planned Backend
+
+* Node.js
+* Express.js
+* MongoDB
+
+### Future Integrations
+
+* AI Health Assistant
+* OCR-based Medical Report Analysis
+* Personalized Health Dashboard
+
+## Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/codewithtrisha09/sheCARE.git
+```
+
+Navigate to the project folder:
+
+```bash
+cd sheCARE
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+## Project Status
+
+Currently under active development.
+
+### Completed
+
+* React + Vite Setup
+* Landing Page
+* Responsive Navigation Bar
+* Custom Branding and Logo
+
+### In Progress
+
+* Enhanced UI Components
+* Health Resources Section
+* Period Tracker Integration
+
+## Future Scope
+
+* User Authentication
+* Period Tracking Dashboard
+* AI-powered Health Assistant
+* Medical Report Simplification
+* Health Reminders and Notifications
+
+## Author
+
+Trisha
+
+Built as a health-tech initiative focused on improving awareness and accessibility of healthcare information for young women.
+
