@@ -1,12 +1,13 @@
 import "./App.css";
 import logo from "./assets/image.png";
+
 function App() {
   return (
     <div>
       <nav className="navbar">
         <div className="logo-container">
-        <img src={logo} alt="SheCARE Logo" className="logo" />
-        <h2>SheCARE</h2>
+          <img src={logo} alt="SheCARE Logo" className="logo" />
+          <h2>SheCARE</h2>
         </div>
 
         <ul className="nav-links">
@@ -18,27 +19,27 @@ function App() {
       </nav>
 
       <section className="hero">
-  <h1>
-    Empowering Teen Girls With
-    Reliable Health Knowledge
-  </h1>
+        <h1>
+          Empowering Teen Girls With
+          Reliable Health Knowledge
+        </h1>
 
-  <p>
-    A safe educational platform designed for teenagers
-    to learn about menstrual health, mental wellbeing,
-    nutrition, body changes, and common misconceptions.
-  </p>
+        <p>
+          A safe educational platform designed for teenagers
+          to learn about menstrual health, mental wellbeing,
+          nutrition, body changes, and common misconceptions.
+        </p>
 
-  <div className="hero-buttons">
-    <button className="primary-btn">
-      Explore Topics
-    </button>
+        <div className="hero-buttons">
+          <button className="primary-btn">
+            Explore Topics
+          </button>
 
-    <button className="secondary-btn">
-      Learn More
-    </button>
-  </div>
-</section>
+          <button className="secondary-btn">
+            Learn More
+          </button>
+        </div>
+      </section>
 
       <section className="features">
 
@@ -64,6 +65,20 @@ function App() {
         </div>
 
       </section>
+
+      <section className="about">
+        <h2>Why SheCARE?</h2>
+        <p>
+          SheCARE aims to make health education accessible,
+          reliable, and stigma-free for adolescent girls.
+        </p>
+      </section>
+
+      <footer className="footer">
+        <p>© 2026 SheCARE. All Rights Reserved.</p>
+        <p>Built by Trisha Shetty • MIT, Manipal</p>
+      </footer>
+
     </div>
   );
 }
