@@ -1,0 +1,65 @@
+.menstrual-page {
+  background: #fff7fb;
+  min-height: 100vh;
+  padding: 40px;
+}
+
+.mh-hero {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(
+    135deg,
+    #ff9ecf,
+    #ffc6e5
+  );
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.mh-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.mh-hero p {
+  font-size: 1.1rem;
+}
+
+.mh-card {
+  background: white;
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.mh-card h2 {
+  color: #d63384;
+  margin-bottom: 15px;
+}
+
+.phase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 20px;
+}
+
+.phase {
+  background: #ffe4f2;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.phase h3 {
+  color: #c2185b;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}

@@ -186,3 +186,86 @@ body {
 .footer p:last-child {
   color: #7e22ce;
 }
+.section-title {
+text-align: center;
+margin-bottom: 40px;
+color: #6b21a8;
+}
+
+.topics-grid {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 25px;
+}
+
+.tracker,
+.quiz,
+.assistant {
+text-align: center;
+padding: 80px 20px;
+max-width: 900px;
+margin: auto;
+}
+
+.tracker h2,
+.quiz h2,
+.assistant h2 {
+color: #6b21a8;
+margin-bottom: 20px;
+}
+
+.tracker p,
+.quiz p,
+.assistant p {
+color: #555;
+max-width: 700px;
+margin: 0 auto 30px;
+line-height: 1.8;
+}
+.page-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+.page-container h1 {
+  text-align: center;
+  color: #6b21a8;
+  margin-bottom: 20px;
+}
+
+.intro {
+  text-align: center;
+  color: #555;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+.info-section {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+}
+
+.info-section h2 {
+  color: #7e22ce;
+  margin-bottom: 10px;
+}
+
+.info-section p,
+.info-section li {
+  color: #555;
+  line-height: 1.7;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #5b21b6;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  color: #7e22ce;
+}
