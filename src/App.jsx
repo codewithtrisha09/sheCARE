@@ -1,12 +1,19 @@
 import "./App.css";
 import logo from "./assets/image.png";
-
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import MenstrualHealth from "./pages/MenstrualHealth";
+import NutritionWellness from "./pages/NutritionWellness";
+import MentalHealth from "./pages/MentalHealth";
 
 function HomePage() {
   return (
-    <div>
+    <div className="app-viewport">
+      {/* GLOBAL BACKGROUND SHAPES */}
+      <div className="ambient-blur blur-pink"></div>
+      <div className="ambient-blur blur-purple"></div>
+
+      {/* TOP NAVIGATION ARCHITECTURE */}
       <nav className="navbar">
         <div className="logo-container">
           <img src={logo} alt="SheCARE Logo" className="logo" />
@@ -14,183 +21,183 @@ function HomePage() {
         </div>
 
         <ul className="nav-links">
-          <li>Home</li>
-          <li>Health</li>
-          <li>Myths</li>
-          <li>Mental Health</li>
+          <li><Link to="/" className="active-nav">Home</Link></li>
+          <li><Link to="/menstrual-health">Menstrual Health</Link></li>
+          <li><Link to="/nutrition-wellness">Nutrition & Fuel</Link></li>
+          <li><Link to="/mental-health">Mind & Neuro</Link></li>
+          <li><a href="#topics-explore">Health Topics</a></li>
         </ul>
       </nav>
 
-      <section className="hero">
+      {/* HERO SECTION */}
+      <header className="hero">
+        <div className="announcement-badge">
+          <span>Evidence-Based Adolescent Health Education Platform // Vibe Certified</span>
+        </div>
         <h1>
-          Empowering Teen Girls With
-          Reliable Health Knowledge
+          Empowering Teen Girls With<br />
+          <span className="brand-gradient">Absolute No-Cap Science</span>
         </h1>
 
         <p>
-          A safe educational platform designed for teenagers
-          to learn about menstrual health, mental wellbeing,
-          nutrition, body changes, and common misconceptions.
+          We are completely binning the toxic medical jargon and old cultural stigmas. Welcome to a safe, tech-forward space engineered for teenagers to completely unlock how menstrual cycles, brain chemistry, and metabolic metrics actually run your internal operating system.
         </p>
 
         <div className="hero-buttons">
-          <button className="primary-btn">
-            Explore Topics
-          </button>
+          <a href="#topics-explore" className="primary-btn-link">Explore Systems</a>
+          <a href="#about-section" className="secondary-btn-link">Our Manifesto</a>
+        </div>
+      </header>
 
-          <button className="secondary-btn">
-            Learn More
-          </button>
+      {/* HIGH-IMPACT METRICS GRID */}
+      <section className="features-preview">
+        <div className="preview-card">
+          <div className="icon-dot-purple"></div>
+          <h3>Period Architecture</h3>
+          <p>Deconstruct reproductive loops and cycle biology with elite clinical accuracy.</p>
+        </div>
+
+        <div className="preview-card">
+          <div className="icon-dot-pink"></div>
+          <h3>Myth Busting</h3>
+          <p>Exposing ancient, unscientific historical narratives with real laboratory receipts.</p>
+        </div>
+
+        <div className="preview-card">
+          <div className="icon-dot-blue"></div>
+          <h3>Neuro-Wellness</h3>
+          <p>Navigate amygdala stress thresholds, neurotransmitter dips, and mental armor codes.</p>
         </div>
       </section>
 
-      <section className="features">
-        <div className="card">
-          <h3>Period Education</h3>
-          <p>
-            Learn about menstrual health and cycle awareness.
-          </p>
-        </div>
-
-        <div className="card">
-          <h3>Myths vs Facts</h3>
-          <p>
-            Bust common misconceptions about health and hygiene.
-          </p>
-        </div>
-
-        <div className="card">
-          <h3>Mental Wellness</h3>
-          <p>
-            Learn about stress, anxiety, confidence and self-care.
-          </p>
-        </div>
-      </section>
-
-      <section className="about">
-        <h2>Why SheCARE?</h2>
+      {/* MISSION STRATIFICATION STATEMENT */}
+      <section id="about-section" className="about">
+        <span className="section-tag">The Main Mission</span>
+        <h2>Why SheCARE hits different?</h2>
         <p>
-          SheCARE aims to make health education accessible,
-          reliable, and stigma-free for adolescent girls.
+          Adolescence forces your body through hyper-speed hormonal updates. Traditional health classes are stiff and gatekept. SheCARE translates high-level clinical biochemistry into intuitive, interactive code architectures so you can finally master your own biological data.
         </p>
       </section>
 
-      <section className="features">
-        <h2 className="section-title">Explore Health Topics</h2>
+      {/* INTERACTIVE MODULE HUB */}
+      <section id="topics-explore" className="topics-section">
+        <h2 className="section-title">Explore Specialized Modules</h2>
+        <p className="section-subtitle">Click into any unlocked framework below to patch your internal wellness protocol.</p>
 
         <div className="topics-grid">
-
-          <Link
-            to="/menstrual-health"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            <div className="card">
+          {/* MODULE 1: MENSTRUAL HEALTH */}
+          <Link to="/menstrual-health" className="topic-card-wrapper">
+            <div className="interactive-card core-highlight">
+              <div className="card-badge-hot">Core System Unlocked</div>
               <h3>Menstrual Health</h3>
               <p>
-                Learn about the menstrual cycle, period hygiene,
-                common symptoms, and healthy self-care practices.
+                Analyze chemical endocrine phases, track cycle lengths, explore symptom physiology pathways, 
+                and launch custom PCOS evaluation profiles.
               </p>
+              <span className="card-action-trigger">Launch Application Engine →</span>
             </div>
           </Link>
 
-          <div className="card">
-            <h3>Nutrition & Wellness</h3>
-            <p>
-              Understand balanced nutrition, healthy eating habits,
-              and essential nutrients for overall well-being.
-            </p>
-          </div>
+          {/* MODULE 2: NUTRITION & WELLNESS */}
+          <Link to="/nutrition-wellness" className="topic-card-wrapper">
+            <div className="interactive-card nutrition-highlight">
+              <div className="card-badge-hot nutrition-badge">Fuel Module Unlocked</div>
+              <h3>Nutrition & Wellness</h3>
+              <p>
+                Understand macro balancing, carbohydrate armor, and how to stabilize your real-time blood sugar metrics to prevent testosterone and insulin spikes.
+              </p>
+              <span className="card-action-trigger nutrition-trigger">Launch Fuel Engine →</span>
+            </div>
+          </Link>
 
-          <div className="card">
-            <h3>Mental Health</h3>
-            <p>
-              Explore stress management, emotional well-being,
-              confidence building, and mental resilience.
-            </p>
-          </div>
+          {/* MODULE 3: MENTAL HEALTH (NOW COMPLETELY UNLOCKED!) */}
+          <Link to="/mental-health" className="topic-card-wrapper">
+            <div className="interactive-card mental-highlight">
+              <div className="card-badge-hot mental-badge">Neuro Module Unlocked</div>
+              <h3>Mental Health & Neuro</h3>
+              <p>
+                Map the HPO Axis feedback loop. See how pre-period estrogen and progesterone crashes cause real-time serotonin deficits and amygdala reactivity.
+              </p>
+              <span className="card-action-trigger mental-trigger">Launch Brain Matrix →</span>
+            </div>
+          </Link>
 
-          <div className="card">
+          {/* MODULE 4: PHYSICAL HEALTH (LOCKED) */}
+          <div className="interactive-card system-locked-state">
+            <span className="lock-tag">Patch 1.4 Pending</span>
             <h3>Physical Health</h3>
             <p>
-              Learn the importance of exercise, sleep, and healthy
-              lifestyle choices during adolescence.
+              Learn about optimizing sleep stages, safe active exercise habits, and matching 
+              your movement routines to your physical energy limits.
             </p>
+            <span className="card-action-trigger inactive">System Locked</span>
           </div>
 
-          <div className="card">
+          {/* MODULE 5: MYTHS VS FACTS (LOCKED) */}
+          <div className="interactive-card system-locked-state">
+            <span className="lock-tag">Patch 1.5 Pending</span>
             <h3>Myths vs Facts</h3>
             <p>
-              Identify common misconceptions and gain access to
-              scientifically accurate health information.
+              Sort through old cultural assumptions, understand historical facts, and back your 
+              reproductive arguments with objective medical proof.
             </p>
+            <span className="card-action-trigger inactive">System Locked</span>
           </div>
 
-          <div className="card">
+          {/* MODULE 6: PERSONAL HYGIENE (LOCKED) */}
+          <div className="interactive-card system-locked-state">
+            <span className="lock-tag">Patch 1.6 Pending</span>
             <h3>Personal Hygiene</h3>
             <p>
-              Discover best practices for maintaining personal hygiene
-              and preventing common health issues.
+              Review safe best practices for tracking products, skin barrier upkeep, and handling 
+              squeeze gland shifts cleanly.
             </p>
+            <span className="card-action-trigger inactive">System Locked</span>
           </div>
-
         </div>
       </section>
 
-      <section className="tracker">
-        <h2>Period Tracker</h2>
+      {/* UTILITY TILES */}
+      <section className="utility-split-grid">
+        <div className="utility-panel">
+          <h2>Cycle Analysis & Tracking</h2>
+          <p>Log period timing, record symptom clusters, and notice changes in your metabolic baseline over time.</p>
+          <button className="panel-btn">Initialize Tracker</button>
+        </div>
 
-        <p>
-          Track menstrual cycles, monitor symptoms, and gain
-          better insights into reproductive health.
-        </p>
-
-        <button className="primary-btn">
-          Start Tracking
-        </button>
+        <div className="utility-panel">
+          <h2>Interactive Recall Modules</h2>
+          <p>Challenge yourself on biological terms, testing your grasp of hormones, receptors, and ovarian systems.</p>
+          <button className="panel-btn-alt">Take System Test</button>
+        </div>
       </section>
 
-      <section className="quiz">
-        <h2>Health Knowledge Assessment</h2>
-
-        <p>
-          Test your understanding of important health topics
-          through interactive quizzes and learning activities.
-        </p>
-
-        <button className="secondary-btn">
-          Take Assessment
-        </button>
-      </section>
-
-      <section className="assistant">
-        <h2>SheCARE Assistant</h2>
-
-        <p>
-          Access educational resources and receive guidance
-          on health and wellness topics.
-        </p>
-
-        <button className="primary-btn">
-          Learn More
-        </button>
-      </section>
-
+      {/* FOOTER */}
       <footer className="footer">
-        <p>© 2026 SheCARE. All Rights Reserved.</p>
-        <p>Built by Trisha Shetty • MIT, Manipal</p>
+        <div className="footer-content">
+          <p>© 2026 SheCARE Bio-Education Ecosystem. All Rights Reserved.</p>
+          <p className="credits">Curated & Assembled by <strong>Trisha Shetty</strong> • MIT, Manipal</p>
+        </div>
       </footer>
     </div>
   );
 }
 
+// ROUTER CONTROLLER COMPONENT
 function App() {
+  const location = useLocation();
+
+  // Scroll to top automatically when navigating to clean up layout jumps
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route
-        path="/menstrual-health"
-        element={<MenstrualHealth />}
-      />
+      <Route path="/menstrual-health" element={<MenstrualHealth />} />
+      <Route path="/nutrition-wellness" element={<NutritionWellness />} />
+      <Route path="/mental-health" element={<MentalHealth />} />
     </Routes>
   );
 }
