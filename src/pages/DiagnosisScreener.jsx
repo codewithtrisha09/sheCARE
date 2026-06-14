@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./DiagnosticScreener.css";
+import "./DiagnosisScreener.css";
 
-function DiagnosticScreener() {
+function DiagnosisScreener() {
   // ADVANCED BIOMETRIC & DIAGNOSTIC PHENOTYPE STATE
   const [biometrics, setBiometrics] = useState({
     weight: "",
@@ -307,4 +307,4 @@ function DiagnosticScreener() {
   );
 }
 
-export default DiagnosticScreener;
+export default DiagnosisScreener;

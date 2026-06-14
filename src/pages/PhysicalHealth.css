@@ -1,0 +1,1198 @@
+/* ============================================
+   PHYSICAL HEALTH MODULE - TEEN WELLNESS CSS
+   ============================================ */
+
+/* --- PAGE HEADER & NAVIGATION --- */
+.page-title {
+  font-size: 1.25rem;
+  color: #a78bfa;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.ph-hero {
+  text-align: center;
+  padding: 100px 10px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ph-badge {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #10b981;
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ph-hero h1 {
+  font-size: 3.2rem;
+  max-width: 900px;
+  line-height: 1.3;
+  letter-spacing: -1px;
+  color: #f4f2f6;
+  margin-bottom: 20px;
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ph-hero p {
+  max-width: 750px;
+  font-size: 1.08rem;
+  color: #9ca3af;
+  line-height: 1.7;
+}
+
+/* --- TAB NAVIGATION --- */
+.ph-tabs-section {
+  margin-top: 80px;
+  margin-bottom: 60px;
+}
+
+.ph-tab-buttons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 20px;
+}
+
+.ph-tab-btn {
+  background: transparent;
+  border: none;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.ph-tab-btn:hover {
+  color: #a78bfa;
+}
+
+.ph-tab-btn.active {
+  color: #10b981;
+}
+
+.ph-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -21px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: #10b981;
+  border-radius: 2px;
+}
+
+.ph-tab-content {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* --- INTRO CARDS --- */
+.ph-intro-card {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.05) 0%, rgba(59, 130, 246, 0.02) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 50px;
+  backdrop-filter: blur(10px);
+}
+
+.ph-intro-card h2 {
+  font-size: 2rem;
+  color: #f4f2f6;
+  margin-bottom: 15px;
+  letter-spacing: -0.5px;
+}
+
+.ph-intro-card p {
+  font-size: 1.05rem;
+  color: #9ca3af;
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* ============================================
+   TAB 1: FITNESS BASICS
+   ============================================ */
+
+.ph-workout-types {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 60px;
+}
+
+.ph-workout-type-card {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, rgba(167, 139, 250, 0.02) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.ph-workout-type-card:hover {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-4px);
+}
+
+.ph-workout-type-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.ph-workout-icon {
+  font-size: 2.5rem;
+}
+
+.ph-workout-type-header h3 {
+  font-size: 1.35rem;
+  color: #e5e7eb;
+  margin: 0;
+}
+
+.ph-workout-description {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.ph-workout-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+}
+
+.ph-detail-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.ph-detail-item strong {
+  color: #10b981;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 5px;
+}
+
+.ph-detail-item span {
+  color: #d1d5db;
+  font-size: 0.95rem;
+}
+
+.ph-benefits-box,
+.ph-examples-box {
+  margin-bottom: 15px;
+}
+
+.ph-benefits-box:last-child {
+  margin-bottom: 0;
+}
+
+.ph-benefits-box strong,
+.ph-examples-box strong {
+  color: #e5e7eb;
+  display: block;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.ph-benefits-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ph-benefits-box li {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  padding-left: 20px;
+  position: relative;
+}
+
+.ph-benefits-box li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.ph-example-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ph-example-tag {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* WEEKLY SCHEDULE */
+.ph-weekly-schedule {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 50px;
+}
+
+.ph-weekly-schedule h3 {
+  font-size: 1.6rem;
+  color: #f4f2f6;
+  margin-bottom: 12px;
+}
+
+.ph-weekly-schedule > p {
+  color: #9ca3af;
+  font-size: 0.98rem;
+  margin-bottom: 25px;
+}
+
+.ph-schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.ph-schedule-day {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.ph-schedule-day.rest {
+  background: rgba(167, 139, 250, 0.05);
+  border-color: rgba(167, 139, 250, 0.2);
+}
+
+.ph-schedule-day h4 {
+  font-size: 1.1rem;
+  color: #e5e7eb;
+  margin-bottom: 10px;
+}
+
+.ph-schedule-day p {
+  color: #9ca3af;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ph-schedule-note {
+  background: rgba(59, 130, 246, 0.08);
+  border-left: 4px solid #3b82f6;
+  padding: 18px;
+  border-radius: 8px;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* FITNESS TRACKER */
+.ph-fitness-tracker {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.ph-fitness-tracker h3 {
+  font-size: 1.6rem;
+  color: #f4f2f6;
+  margin-bottom: 25px;
+}
+
+.ph-tracker-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.ph-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ph-form-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   TAB 2: SLEEP SCIENCE
+   ============================================ */
+
+.ph-sleep-stages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.ph-sleep-stage-card {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.05) 0%, rgba(167, 139, 250, 0.02) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.ph-sleep-stage-card:hover {
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
+  border-color: rgba(59, 130, 246, 0.35);
+  transform: translateY(-4px);
+}
+
+.ph-sleep-stage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.ph-sleep-stage-header h3 {
+  font-size: 1.15rem;
+  color: #3b82f6;
+  margin: 0;
+  font-weight: 700;
+}
+
+.ph-sleep-duration {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ph-sleep-section {
+  margin-bottom: 15px;
+}
+
+.ph-sleep-section:last-child {
+  margin-bottom: 0;
+}
+
+.ph-sleep-section strong {
+  color: #e5e7eb;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.92rem;
+}
+
+.ph-sleep-section p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* SLEEP FACTS */
+.ph-sleep-facts {
+  margin-bottom: 50px;
+}
+
+.ph-sleep-facts h3 {
+  font-size: 1.6rem;
+  color: #f4f2f6;
+  margin-bottom: 25px;
+}
+
+.ph-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.ph-fact-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.ph-fact-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.ph-fact-card h4 {
+  font-size: 1.1rem;
+  color: #e5e7eb;
+  margin-bottom: 12px;
+}
+
+.ph-fact-card p {
+  color: #9ca3af;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* SLEEP TRACKING */
+.ph-sleep-tracking {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 50px;
+}
+
+.ph-sleep-tracking h3 {
+  font-size: 1.6rem;
+  color: #f4f2f6;
+  margin-bottom: 12px;
+}
+
+.ph-sleep-note {
+  color: #9ca3af;
+  font-size: 0.98rem;
+  margin-bottom: 25px;
+}
+
+.ph-sleep-input-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.ph-sleep-result {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
+}
+
+.ph-sleep-result h4 {
+  font-size: 1.25rem;
+  color: #10b981;
+  margin-bottom: 20px;
+}
+
+.ph-sleep-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.ph-stat-box {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  padding: 18px;
+  text-align: center;
+}
+
+.ph-stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #10b981;
+  margin-bottom: 8px;
+}
+
+.ph-stat-label {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ph-sleep-recommendation {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid #10b981;
+  padding: 18px;
+  border-radius: 8px;
+}
+
+.ph-sleep-recommendation p {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* SLEEP HACKS */
+.ph-sleep-hacks {
+  margin-bottom: 50px;
+}
+
+.ph-sleep-hacks h3 {
+  font-size: 1.6rem;
+  color: #f4f2f6;
+  margin-bottom: 25px;
+}
+
+.ph-hacks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.ph-hack-card {
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.05) 0%, rgba(236, 72, 153, 0.03) 100%);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  border-radius: 16px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.ph-hack-card:hover {
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.08) 0%, rgba(236, 72, 153, 0.05) 100%);
+  border-color: rgba(167, 139, 250, 0.3);
+  transform: translateY(-4px);
+}
+
+.ph-hack-card h4 {
+  font-size: 1.1rem;
+  color: #a78bfa;
+  margin-bottom: 12px;
+}
+
+.ph-hack-card p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   TAB 3: NUTRITION
+   ============================================ */
+
+.ph-nutrition-macros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.ph-macro-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.ph-macro-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.ph-macro-card h3 {
+  font-size: 1.3rem;
+  color: #e5e7eb;
+  margin-bottom: 15px;
+}
+
+.ph-macro-amount {
+  color: #10b981;
+  font-size: 0.95rem;
+  margin-bottom: 15px;
+}
+
+.ph-macro-why {
+  color: #9ca3af;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.ph-macro-sources {
+  margin-bottom: 18px;
+}
+
+.ph-macro-sources strong {
+  color: #e5e7eb;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.ph-source-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ph-source-tag {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.ph-macro-tip {
+  background: rgba(59, 130, 246, 0.08);
+  border-left: 3px solid #3b82f6;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.ph-macro-tip strong {
+  color: #3b82f6;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.ph-macro-tip p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* MEAL IDEAS */
+.ph-meal-ideas {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 50px;
+}
+
+.ph-meal-ideas h3 {
+  font-size: 1.6rem;
+  color: #f4f2f6;
+  margin-bottom: 12px;
+}
+
+.ph-meal-ideas > p {
+  color: #9ca3af;
+  font-size: 0.98rem;
+  margin-bottom: 25px;
+}
+
+.ph-meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.ph-meal-card {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.02) 100%);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 16px;
+  padding: 25px;
+}
+
+.ph-meal-card h4 {
+  font-size: 1.15rem;
+  color: #10b981;
+  margin-bottom: 15px;
+}
+
+.ph-meal-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ph-meal-card li {
+  color: #d1d5db;
+  font-size: 0.9rem;
+  padding: 6px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.ph-meal-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+/* HYDRATION */
+.ph-hydration-section {
+  background: rgba(59, 130, 246, 0.05);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.ph-hydration-section h3 {
+  font-size: 1.6rem;
+  color: #f4f2f6;
+  margin-bottom: 25px;
+}
+
+.ph-hydration-content p {
+  color: #9ca3af;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+.ph-hydration-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.ph-hydration-fact {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.ph-hydration-fact strong {
+  color: #e5e7eb;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+}
+
+.ph-hydration-fact p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 !important;
+}
+
+/* ============================================
+   TAB 4: COMMON ISSUES
+   ============================================ */
+
+.ph-issues-list {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.ph-issue-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 30px;
+  display: flex;
+  gap: 25px;
+  transition: all 0.3s ease;
+}
+
+.ph-issue-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.ph-issue-number {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #3b82f6, #10b981);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.ph-issue-content {
+  flex: 1;
+}
+
+.ph-issue-content h3 {
+  font-size: 1.25rem;
+  color: #e5e7eb;
+  margin-bottom: 15px;
+}
+
+.ph-issue-section {
+  margin-bottom: 15px;
+}
+
+.ph-issue-section:last-child {
+  margin-bottom: 0;
+}
+
+.ph-issue-section strong {
+  color: #e5e7eb;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.ph-issue-section p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.ph-issue-section.impact {
+  background: rgba(236, 72, 153, 0.08);
+  border-left: 4px solid #ec4899;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.ph-issue-section.impact strong {
+  color: #ec4899;
+}
+
+/* ============================================
+   TAB 5: MENTAL HEALTH
+   ============================================ */
+
+.ph-mental-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.ph-mental-card {
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.05) 0%, rgba(236, 72, 153, 0.03) 100%);
+  border: 1px solid rgba(167, 139, 250, 0.15);
+  border-radius: 18px;
+  padding: 30px;
+  transition: all 0.3s ease;
+}
+
+.ph-mental-card:hover {
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.08) 0%, rgba(236, 72, 153, 0.05) 100%);
+  border-color: rgba(167, 139, 250, 0.3);
+  transform: translateY(-4px);
+}
+
+.ph-mental-card h3 {
+  font-size: 1.2rem;
+  color: #a78bfa;
+  margin-bottom: 20px;
+}
+
+.ph-mental-section {
+  margin-bottom: 18px;
+}
+
+.ph-mental-section:last-child {
+  margin-bottom: 0;
+}
+
+.ph-mental-section strong {
+  color: #e5e7eb;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 0.92rem;
+}
+
+.ph-mental-section p {
+  color: #9ca3af;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.ph-mental-section.reality {
+  background: rgba(59, 130, 246, 0.08);
+  border-left: 4px solid #3b82f6;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.ph-mental-section.reality strong {
+  color: #3b82f6;
+}
+
+/* HELP SECTION */
+.ph-help-section {
+  background: rgba(236, 72, 153, 0.08);
+  border: 1px solid rgba(236, 72, 153, 0.2);
+  border-radius: 24px;
+  padding: 40px;
+  margin-bottom: 50px;
+}
+
+.ph-help-section h3 {
+  font-size: 1.5rem;
+  color: #ec4899;
+  margin-bottom: 20px;
+}
+
+.ph-help-content p {
+  color: #9ca3af;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin-bottom: 15px;
+}
+
+.ph-help-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.ph-help-list li {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  padding: 10px 0;
+  padding-left: 25px;
+  position: relative;
+}
+
+.ph-help-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #ec4899;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.ph-help-note {
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid #10b981;
+  padding: 18px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* KEY TAKEAWAYS */
+.ph-key-takeaways-section {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 24px;
+  padding: 40px;
+}
+
+.ph-key-takeaways-section h3 {
+  font-size: 1.6rem;
+  color: #f4f2f6;
+  margin-bottom: 25px;
+}
+
+.ph-takeaway-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ph-takeaway-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 4px solid #10b981;
+  padding: 20px;
+  border-radius: 8px;
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .ph-hero h1 {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .ph-hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .ph-hero p {
+    font-size: 0.98rem;
+  }
+
+  .page-title {
+    font-size: 1rem;
+  }
+
+  .ph-tab-buttons {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .ph-tab-btn {
+    font-size: 0.85rem;
+    padding: 10px 12px;
+  }
+
+  .ph-intro-card {
+    padding: 25px;
+  }
+
+  .ph-intro-card h2 {
+    font-size: 1.5rem;
+  }
+
+  .ph-workout-types {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-schedule-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ph-sleep-stages {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-facts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-hacks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-nutrition-macros {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-meals-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-hydration-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-mental-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-issue-card {
+    flex-direction: column;
+  }
+
+  .ph-issue-number {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+  }
+
+  .ph-fitness-tracker,
+  .ph-sleep-tracking,
+  .ph-meal-ideas,
+  .ph-hydration-section,
+  .ph-help-section,
+  .ph-key-takeaways-section {
+    padding: 25px;
+  }
+
+  .ph-sleep-input-section {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-workout-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .ph-hero h1 {
+    font-size: 1.4rem;
+    line-height: 1.25;
+  }
+
+  .ph-badge {
+    font-size: 0.7rem;
+    padding: 6px 12px;
+  }
+
+  .ph-tab-btn {
+    font-size: 0.75rem;
+    padding: 8px 10px;
+  }
+
+  .ph-workout-types {
+    gap: 15px;
+  }
+
+  .ph-schedule-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ph-sleep-stages {
+    gap: 15px;
+  }
+
+  .ph-hacks-grid {
+    gap: 15px;
+  }
+
+  .ph-nutrition-macros {
+    gap: 15px;
+  }
+
+  .ph-meals-grid {
+    gap: 15px;
+  }
+
+  .ph-mental-grid {
+    gap: 15px;
+  }
+
+  .ph-example-tags,
+  .ph-source-tags {
+    gap: 6px;
+  }
+
+  .ph-example-tag,
+  .ph-source-tag {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}

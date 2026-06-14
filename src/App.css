@@ -827,3 +827,19 @@ body {
     flex-direction: column;
   }
 }
+/* PHYSICAL HEALTH HIGHLIGHT */
+.physical-highlight {
+  background: linear-gradient(180deg, rgba(16, 185, 129, 0.03) 0%, rgba(59, 130, 246, 0.01) 100%);
+}
+
+.physical-highlight:hover {
+  border-color: #10b981 !important;
+}
+
+.physical-badge {
+  background: #10b981 !important;
+}
+
+.physical-trigger {
+  color: #10b981 !important;
+}

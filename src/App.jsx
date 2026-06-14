@@ -5,7 +5,8 @@ import { useEffect } from "react";
 import MenstrualHealth from "./pages/MenstrualHealth";
 import NutritionWellness from "./pages/NutritionWellness";
 import MentalHealth from "./pages/MentalHealth";
-
+import DiagnosisScreener from "./pages/DiagnosisScreener";
+import PhysicalHealth from "./pages/PhysicalHealth";
 function HomePage() {
   return (
     <div className="app-viewport">
@@ -123,15 +124,19 @@ function HomePage() {
           </Link>
 
           {/* MODULE 4: PHYSICAL HEALTH (LOCKED) */}
-          <div className="interactive-card system-locked-state">
-            <span className="lock-tag">Patch 1.4 Pending</span>
-            <h3>Physical Health</h3>
-            <p>
-              Learn about optimizing sleep stages, safe active exercise habits, and matching 
-              your movement routines to your physical energy limits.
-            </p>
-            <span className="card-action-trigger inactive">System Locked</span>
-          </div>
+          
+<Link to="/physical-health" className="topic-card-wrapper">
+  <div className="interactive-card physical-highlight">
+    <div className="card-badge-hot physical-badge">Movement Module Unlocked</div>
+    <h3>Physical Health & Movement</h3>
+    <p>
+      Master cycle-synced workouts, sleep architecture, and energy recovery protocols. 
+      Learn when to push hard and when to rest strategically.
+    </p>
+    <span className="card-action-trigger physical-trigger">Launch Movement Engine →</span>
+  </div>
+</Link>
+          
 
           {/* MODULE 5: MYTHS VS FACTS (LOCKED) */}
           <div className="interactive-card system-locked-state">
@@ -162,7 +167,7 @@ function HomePage() {
         <div className="utility-panel">
           <h2>Cycle Analysis & Tracking</h2>
           <p>Log period timing, record symptom clusters, and notice changes in your metabolic baseline over time.</p>
-          <button className="panel-btn">Initialize Tracker</button>
+          <Link to="/diagnosis-screener" className="panel-btn">Initialize Tracker</Link>
         </div>
 
         <div className="utility-panel">
@@ -198,6 +203,8 @@ function App() {
       <Route path="/menstrual-health" element={<MenstrualHealth />} />
       <Route path="/nutrition-wellness" element={<NutritionWellness />} />
       <Route path="/mental-health" element={<MentalHealth />} />
+      <Route path="/diagnosis-screener" element={<DiagnosisScreener />} />
+      <Route path="/physical-health" element={<PhysicalHealth/>}/>
     </Routes>
   );
 }
