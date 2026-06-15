@@ -7,6 +7,7 @@ import NutritionWellness from "./pages/NutritionWellness";
 import MentalHealth from "./pages/MentalHealth";
 import DiagnosisScreener from "./pages/DiagnosisScreener";
 import PhysicalHealth from "./pages/PhysicalHealth";
+import MythVsFact from "./pages/MythVsFact";
 function HomePage() {
   return (
     <div className="app-viewport">
@@ -139,15 +140,25 @@ function HomePage() {
           
 
           {/* MODULE 5: MYTHS VS FACTS (LOCKED) */}
-          <div className="interactive-card system-locked-state">
-            <span className="lock-tag">Patch 1.5 Pending</span>
-            <h3>Myths vs Facts</h3>
-            <p>
-              Sort through old cultural assumptions, understand historical facts, and back your 
-              reproductive arguments with objective medical proof.
-            </p>
-            <span className="card-action-trigger inactive">System Locked</span>
-          </div>
+          <Link to="/myth-vs-fact" className="topic-card-wrapper">
+  <div className="interactive-card myth-highlight">
+    <div className="card-badge-hot myth-badge">
+      Truth Module Unlocked
+    </div>
+
+    <h3>Myths vs Facts</h3>
+
+    <p>
+      Separate scientific reality from cultural myths.
+      Learn evidence-based facts about periods, fertility,
+      nutrition, hormones, and adolescent health.
+    </p>
+
+    <span className="card-action-trigger myth-trigger">
+      Launch Truth Engine →
+    </span>
+  </div>
+</Link>
 
           {/* MODULE 6: PERSONAL HYGIENE (LOCKED) */}
           <div className="interactive-card system-locked-state">
@@ -205,6 +216,7 @@ function App() {
       <Route path="/mental-health" element={<MentalHealth />} />
       <Route path="/diagnosis-screener" element={<DiagnosisScreener />} />
       <Route path="/physical-health" element={<PhysicalHealth/>}/>
+      <Route path="/myth-vs-fact" element={<MythVsFact />} />
     </Routes>
   );
 }

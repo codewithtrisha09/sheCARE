@@ -843,3 +843,25 @@ body {
 .physical-trigger {
   color: #10b981 !important;
 }
+/* MYTH VS FACT MODULE */
+
+.myth-highlight {
+  background: linear-gradient(
+    180deg,
+    rgba(245, 158, 11, 0.05) 0%,
+    rgba(236, 72, 153, 0.02) 100%
+  );
+}
+
+.myth-highlight:hover {
+  border-color: #f59e0b !important;
+  box-shadow: 0 12px 30px rgba(245, 158, 11, 0.15);
+}
+
+.myth-badge {
+  background: #f59e0b !important;
+}
+
+.myth-trigger {
+  color: #f59e0b !important;
+}
