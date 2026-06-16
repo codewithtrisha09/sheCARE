@@ -865,3 +865,23 @@ body {
 .myth-trigger {
   color: #f59e0b !important;
 }
+.hygiene-highlight {
+  background: linear-gradient(
+    180deg,
+    rgba(59, 130, 246, 0.05) 0%,
+    rgba(16, 185, 129, 0.03) 100%
+  );
+}
+
+.hygiene-highlight:hover {
+  border-color: #38bdf8 !important;
+  box-shadow: 0 12px 30px rgba(56, 189, 248, 0.15);
+}
+
+.hygiene-badge {
+  background: #38bdf8 !important;
+}
+
+.hygiene-trigger {
+  color: #38bdf8 !important;
+}

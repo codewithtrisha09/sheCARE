@@ -7,6 +7,7 @@ import NutritionWellness from "./pages/NutritionWellness";
 import MentalHealth from "./pages/MentalHealth";
 import DiagnosisScreener from "./pages/DiagnosisScreener";
 import PhysicalHealth from "./pages/PhysicalHealth";
+import PersonalHygiene from "./pages/PersonalHygiene";
 import MythVsFact from "./pages/MythVsFact";
 function HomePage() {
   return (
@@ -161,15 +162,25 @@ function HomePage() {
 </Link>
 
           {/* MODULE 6: PERSONAL HYGIENE (LOCKED) */}
-          <div className="interactive-card system-locked-state">
-            <span className="lock-tag">Patch 1.6 Pending</span>
-            <h3>Personal Hygiene</h3>
-            <p>
-              Review safe best practices for tracking products, skin barrier upkeep, and handling 
-              squeeze gland shifts cleanly.
-            </p>
-            <span className="card-action-trigger inactive">System Locked</span>
-          </div>
+          <Link to="/personal-hygiene" className="topic-card-wrapper">
+  <div className="interactive-card hygiene-highlight">
+    <div className="card-badge-hot hygiene-badge">
+      Hygiene Module Unlocked
+    </div>
+
+    <h3>Personal Hygiene</h3>
+
+    <p>
+      Learn daily hygiene habits, skincare basics, body care,
+      oral health, hair care, acne management, and safe self-care
+      routines designed specifically for teenagers.
+    </p>
+
+    <span className="card-action-trigger hygiene-trigger">
+      Launch Hygiene Hub →
+    </span>
+  </div>
+</Link>
         </div>
       </section>
 
@@ -217,6 +228,7 @@ function App() {
       <Route path="/diagnosis-screener" element={<DiagnosisScreener />} />
       <Route path="/physical-health" element={<PhysicalHealth/>}/>
       <Route path="/myth-vs-fact" element={<MythVsFact />} />
+      <Route path="/personal-hygiene" element={<PersonalHygiene />} />
     </Routes>
   );
 }
