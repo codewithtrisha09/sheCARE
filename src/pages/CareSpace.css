@@ -1,0 +1,39 @@
+.care-space { min-height: 100vh; max-width: 1180px; margin: 0 auto; padding: 52px 28px 72px; color: #3f3541; }
+.care-space * { box-sizing: border-box; }
+.care-hero { max-width: 700px; margin: 0 auto 42px; text-align: center; }
+.eyebrow, .card-kicker { color: #a6657e; font-size: .72rem; font-weight: 800; letter-spacing: .13em; }
+.care-hero h1 { margin: 10px 0 14px; color: #4e3140; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.4rem, 6vw, 4.5rem); font-weight: 500; letter-spacing: -.06em; line-height: 1.03; }
+.care-hero > p:last-child { margin: 0 auto; color: #796775; line-height: 1.7; }
+.care-grid { display: grid; gap: 20px; }
+.overview-grid { grid-template-columns: 1.25fr .9fr; margin-bottom: 20px; }
+.feature-grid { grid-template-columns: repeat(2, 1fr); }
+.soft-card { border: 1px solid #efdde2; border-radius: 24px; background: rgba(255, 253, 250, .92); box-shadow: 0 14px 35px rgba(121, 75, 91, .08); padding: 28px; }
+.soft-card h2 { margin: 9px 0; color: #563746; font-family: Georgia, "Times New Roman", serif; font-size: 1.65rem; font-weight: 500; letter-spacing: -.03em; }
+.soft-card p { color: #796775; line-height: 1.6; }
+.cycle-summary { background: linear-gradient(135deg, #fff5f5, #f9eef4); }
+.check-in-card { background: linear-gradient(135deg, #f7f1ff, #fffafb); }
+.check-in-card a { color: #9c5370; font-weight: 700; text-decoration: none; }
+.privacy-note { display: inline-block; margin-top: 18px; color: #997382; font-size: .8rem; }
+.sign-in-callout { align-items: center; background: #f7eef9; border: 1px solid #eadbf0; border-radius: 14px; color: #715c78; display: flex; gap: 12px; justify-content: center; margin: 0 0 20px; padding: 12px 16px; font-size: .88rem; }.sign-in-callout a { color: #955c8b; font-weight: 800; text-decoration: none; }
+.form-card label, .profile-form label { display: block; margin-top: 16px; color: #6a5060; font-size: .86rem; font-weight: 700; }
+.symptom-picker { margin-top: 17px; }.symptom-picker > span { color: #6a5060; display: block; font-size: .86rem; font-weight: 700; margin-bottom: 8px; }.symptom-picker button { background: #fff8f8; border: 1px solid #ead6dc; color: #805c6c; margin: 0 6px 7px 0; padding: 7px 10px; }.symptom-picker button.symptom-selected { background: #f1cdd7; border-color: #d98ca2; color: #71384d; }
+.care-space input, .care-space textarea { width: 100%; margin-top: 7px; border: 1px solid #e6d3da; border-radius: 11px; background: #fffdfa; color: #4f3946; font: inherit; padding: 11px 12px; outline: none; }
+.care-space textarea { min-height: 92px; resize: vertical; }
+.care-space input:focus, .care-space textarea:focus { border-color: #c9839d; box-shadow: 0 0 0 3px rgba(201, 131, 157, .14); }
+.care-space button { border: 0; border-radius: 999px; background: #a65e78; color: white; cursor: pointer; font: inherit; font-size: .9rem; font-weight: 700; margin-top: 17px; padding: 11px 17px; transition: transform .18s ease, background .18s ease; }
+.care-space button:hover { background: #8f4d66; transform: translateY(-1px); }
+.small-copy { font-size: .9rem; }
+.reminder-list { margin-top: 17px; }
+.reminder { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f1e5e8; color: #684e5d; cursor: pointer; padding: 11px 0; }
+.reminder input { width: 17px; height: 17px; margin: 0; accent-color: #a65e78; }
+.inline-form { display: flex; gap: 8px; align-items: center; }
+.inline-form input { margin-top: 16px; }.inline-form button { margin-top: 16px; white-space: nowrap; }
+.assistant-answer { margin-top: 17px; border-left: 3px solid #d89aac; background: #fff5f7; border-radius: 0 12px 12px 0; padding: 13px; font-size: .92rem; }
+.account-section { display: flex; justify-content: space-between; align-items: end; gap: 28px; margin-top: 20px; background: #fcf7ee; }.account-section > div { max-width: 570px; }
+.profile-form { display: flex; gap: 10px; align-items: end; min-width: min(100%, 340px); }.profile-form label { flex: 1; margin: 0; }.profile-form button { margin: 0; white-space: nowrap; }
+.care-disclaimer { max-width: 780px; color: #927683; font-size: .8rem; line-height: 1.6; margin: 24px auto 0; text-align: center; }
+.save-status { background: #e8f5ef; border-radius: var(--radius-full); color: var(--success); display: inline-block; font-size: .82rem; font-weight: 700; margin-top: 12px; padding: 6px 14px; }
+.sr-only { border: 0; clip: rect(0,0,0,0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
+.care-space button:disabled { cursor: not-allowed; opacity: .65; }
+.care-space button:focus-visible, .care-space input:focus-visible, .care-space textarea:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+@media (max-width: 720px) { .care-space { padding: 34px 16px 52px; }.overview-grid, .feature-grid { grid-template-columns: 1fr; }.soft-card { padding: 23px; }.account-section, .profile-form { align-items: stretch; flex-direction: column; }.profile-form button { width: 100%; } }

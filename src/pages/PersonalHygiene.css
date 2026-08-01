@@ -29,7 +29,10 @@
   position: relative;
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 30px 60px;
+  min-height: 100vh;
+  background: var(--ph-canvas-dark);
+  color: var(--ph-text-primary);
 }
 
 /* ===== TYPOGRAPHY - SCOPED ===== */
@@ -221,6 +224,8 @@
   background: rgba(255, 255, 255, 0.08);
 }
 
+.hygiene-container .quick-action-message { color: var(--ph-brand-purple); margin: 18px auto 0; max-width: 560px; }
+
 /* ===== TOPICS SECTION ===== */
 .hygiene-container .topics-section {
   padding: 60px 0;
@@ -279,18 +284,6 @@
   border-radius: var(--ph-radius-2xl);
   padding: var(--ph-spacing-2xl);
   backdrop-filter: blur(10px);
-  animation: ph-fadeIn var(--ph-transition-normal);
-}
-
-@keyframes ph-fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .hygiene-container .topic-header {

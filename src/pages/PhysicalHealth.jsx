@@ -9,6 +9,8 @@ function PhysicalHealth() {
     wakeTime: "",
     quality: 5,
   });
+  const [workoutLog, setWorkoutLog] = useState({ activity: "", minutes: "", feeling: "" });
+  const [workoutMessage, setWorkoutMessage] = useState("");
 
   const workoutTypes = {
     cardio: {
@@ -182,6 +184,13 @@ function PhysicalHealth() {
   };
 
   const sleepHours = calculateSleepQuality();
+  const logWorkout = () => {
+    if (!workoutLog.activity.trim() || !workoutLog.minutes) { setWorkoutMessage("Add an activity and duration first."); return; }
+    const logs = JSON.parse(localStorage.getItem("shecare-workouts") || "[]");
+    localStorage.setItem("shecare-workouts", JSON.stringify([{ ...workoutLog, createdAt: new Date().toISOString() }, ...logs]));
+    setWorkoutMessage(`Saved ${workoutLog.activity} — ${workoutLog.minutes} minutes. Nice work!`);
+    setWorkoutLog({ activity: "", minutes: "", feeling: "" });
+  };
 
   return (
     <div className="app-viewport">
@@ -352,6 +361,8 @@ function PhysicalHealth() {
                     type="text"
                     placeholder="e.g., went for a run, did yoga, played soccer"
                     className="metabolic-input-field"
+                    value={workoutLog.activity}
+                    onChange={(event) => setWorkoutLog({ ...workoutLog, activity: event.target.value })}
                   />
                 </div>
                 <div className="ph-form-group">
@@ -360,11 +371,13 @@ function PhysicalHealth() {
                     type="number"
                     placeholder="30"
                     className="metabolic-input-field"
+                    value={workoutLog.minutes}
+                    onChange={(event) => setWorkoutLog({ ...workoutLog, minutes: event.target.value })}
                   />
                 </div>
                 <div className="ph-form-group">
                   <label>How did you feel after?</label>
-                  <select className="metabolic-input-field">
+                  <select className="metabolic-input-field" value={workoutLog.feeling} onChange={(event) => setWorkoutLog({ ...workoutLog, feeling: event.target.value })}>
                     <option>-- Select --</option>
                     <option>Exhausted (did hard work!)</option>
                     <option>Good energy</option>
@@ -372,7 +385,8 @@ function PhysicalHealth() {
                     <option>Calm & relaxed</option>
                   </select>
                 </div>
-                <button className="primary-btn">Log Workout</button>
+                <button type="button" className="primary-btn" onClick={logWorkout}>Log Workout</button>
+                {workoutMessage && <p className="ph-workout-message">{workoutMessage}</p>}
               </div>
             </div>
           </div>

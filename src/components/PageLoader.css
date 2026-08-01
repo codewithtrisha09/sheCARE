@@ -1,0 +1,47 @@
+.page-loader {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 50vh;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.page-loader p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+.page-loader-shimmer {
+  max-width: 320px;
+  width: 100%;
+}
+
+.shimmer-bar,
+.shimmer-card {
+  animation: shimmer 1.4s ease-in-out infinite;
+  background: linear-gradient(90deg, #f5e8eb 25%, #faf0f2 50%, #f5e8eb 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius-sm);
+}
+
+.shimmer-bar {
+  height: 14px;
+  margin-bottom: 10px;
+}
+
+.shimmer-bar.short {
+  width: 60%;
+}
+
+.shimmer-card {
+  height: 120px;
+  margin-top: 16px;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

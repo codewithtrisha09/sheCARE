@@ -188,7 +188,7 @@ export default function PersonalHygiene() {
   const [selectedTopic, setSelectedTopic] = useState("skinCare");
   const [checkedItems, setCheckedItems] = useState({});
   const [streakCount, setStreakCount] = useState(7);
-  const [earnedBadges, setEarnedBadges] = useState(0);
+  const [quickMessage, setQuickMessage] = useState("");
 
   const currentTopic = hygieneTopic[selectedTopic];
 
@@ -258,10 +258,11 @@ export default function PersonalHygiene() {
       <section className="quick-actions">
         <h2>Quick Start</h2>
         <div className="action-buttons">
-          <button className="action-btn primary">View Today's Routine</button>
-          <button className="action-btn secondary">Get Personalized Tips</button>
-          <button className="action-btn secondary">Find Your Product Type</button>
+          <button className="action-btn primary" onClick={() => setQuickMessage("Your daily routine is ready below—tick off each small habit as you go.")}>View Today's Routine</button>
+          <button className="action-btn secondary" onClick={() => { setSelectedTopic("skinCare"); setQuickMessage("Start simple: cleanse gently, moisturise, and use sunscreen in the daytime."); }}>Get Personalized Tips</button>
+          <button className="action-btn secondary" onClick={() => { setSelectedTopic("menstrualHygiene"); setQuickMessage("Explore menstrual hygiene below to compare pads, tampons, cups, and period underwear safely."); }}>Find Your Product Type</button>
         </div>
+        {quickMessage && <p className="quick-action-message">{quickMessage}</p>}
       </section>
 
       {/* Hygiene Topics */}
