@@ -1,0 +1,213 @@
+.character-builder {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.character-preview-wrap {
+  align-items: center;
+  background: linear-gradient(145deg, #faf0f2, #f3ebfa);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px;
+  text-align: center;
+}
+
+.character-preview-wrap p {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.character-options {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.character-options legend {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.option-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.option-row.pills button {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 7px 12px;
+}
+
+.option-row.pills button.selected {
+  background: var(--brand-light);
+  border-color: var(--brand);
+  color: #71384d;
+}
+
+.swatch {
+  border: 2px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+}
+
+.swatch.outfit {
+  border-radius: 8px;
+}
+
+.swatch.selected {
+  border-color: var(--text-primary);
+  box-shadow: var(--focus-ring);
+}
+
+.character-avatar {
+  position: relative;
+  width: 100px;
+  height: 120px;
+}
+
+.character-avatar.size-lg {
+  width: 130px;
+  height: 155px;
+}
+
+.character-avatar.size-sm {
+  width: 56px;
+  height: 68px;
+}
+
+.avatar-head {
+  border-radius: 50%;
+  height: 52%;
+  left: 50%;
+  position: absolute;
+  top: 8%;
+  transform: translateX(-50%);
+  width: 55%;
+  z-index: 2;
+}
+
+.size-lg .avatar-head { width: 58%; height: 50%; }
+.size-sm .avatar-head { width: 60%; height: 54%; top: 6%; }
+
+.avatar-hair {
+  border-radius: 50% 50% 20% 20%;
+  height: 55%;
+  left: -8%;
+  position: absolute;
+  top: -18%;
+  width: 116%;
+  z-index: 1;
+}
+
+.avatar-hair.hair-short {
+  height: 35%;
+  top: -5%;
+  border-radius: 40% 40% 10% 10%;
+}
+
+.avatar-hair.hair-curly {
+  border-radius: 45%;
+  height: 65%;
+  top: -22%;
+}
+
+.avatar-hair.hair-bun {
+  height: 30%;
+  top: -12%;
+  width: 80%;
+  left: 10%;
+  border-radius: 50%;
+}
+
+.avatar-hair.hair-bun::after {
+  background: inherit;
+  border-radius: 50%;
+  content: "";
+  height: 45%;
+  left: 50%;
+  position: absolute;
+  top: 70%;
+  transform: translateX(-50%);
+  width: 110%;
+}
+
+.avatar-face {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12%;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 38%;
+  transform: translateX(-50%);
+  width: 70%;
+}
+
+.avatar-eye {
+  background: #3f3541;
+  border-radius: 50%;
+  height: 6px;
+  width: 6px;
+}
+
+.size-lg .avatar-eye { height: 8px; width: 8px; }
+
+.avatar-smile {
+  border: 2px solid #3f3541;
+  border-radius: 0 0 50% 50%;
+  border-top: 0;
+  height: 8px;
+  margin-top: 4px;
+  width: 40%;
+}
+
+.avatar-neck {
+  height: 8%;
+  left: 50%;
+  position: absolute;
+  top: 52%;
+  transform: translateX(-50%);
+  width: 22%;
+  z-index: 1;
+}
+
+.avatar-body {
+  border-radius: 30% 30% 10% 10%;
+  bottom: 0;
+  height: 42%;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 70%;
+  z-index: 0;
+}
+
+.avatar-accessory {
+  font-size: 1rem;
+  position: absolute;
+  right: -4px;
+  top: -6px;
+}
+
+.size-lg .avatar-accessory { font-size: 1.3rem; }

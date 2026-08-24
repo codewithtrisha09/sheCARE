@@ -198,14 +198,6 @@ function PhysicalHealth() {
       <div className="ambient-blur blur-blue" style={{ top: "100px", left: "-150px" }}></div>
       <div className="ambient-blur blur-purple" style={{ bottom: "200px", right: "-100px" }}></div>
 
-      {/* NAVIGATION */}
-      <nav className="navbar">
-        <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "12px" }}>
-          <h2 style={{ margin: 0, color: "#f4f2f6" }}>← SheCARE</h2>
-        </Link>
-        <h3 className="page-title">Teen Physical Wellness & Movement</h3>
-      </nav>
-
       {/* HERO SECTION */}
       <header className="ph-hero">
         <div className="ph-badge">Module 1.4 • Now Unlocked</div>

@@ -59,7 +59,15 @@ const userSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const User = mongoose.model("User", userSchema);
+const feedbackSchema = new mongoose.Schema({
+  rating: { type: Number, required: true, min: 1, max: 5 },
+  message: { type: String, required: true, trim: true, maxlength: 1000 },
+  category: { type: String, default: "general", maxlength: 40 },
+  createdAt: { type: Date, default: Date.now },
+}, { timestamps: true });
+const Feedback = mongoose.model("Feedback", feedbackSchema);
 let databaseReady = false;
+const memoryFeedback = [];
 
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI)
@@ -73,6 +81,7 @@ const publicUser = (user) => ({
   id: user._id?.toString() || user.id,
   name: user.name,
   email: user.email,
+  character: user.wellness?.character || null,
 });
 
 const signAccessToken = (user) =>
@@ -144,15 +153,16 @@ const issueSession = async (res, user) => {
 
 app.post("/api/auth/register", authLimiter, registerValidators, handleValidation, async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, character } = req.body;
     const normalizedEmail = email.trim().toLowerCase();
     if (await findUserByEmail(normalizedEmail)) {
       return res.status(409).json({ message: "An account with that email already exists." });
     }
     const passwordHash = await bcrypt.hash(password, 12);
+    const wellness = character && typeof character === "object" ? { character } : {};
     const user = databaseReady
-      ? await User.create({ name: name.trim(), email: normalizedEmail, passwordHash })
-      : { id: crypto.randomUUID(), name: name.trim(), email: normalizedEmail, passwordHash, wellness: {} };
+      ? await User.create({ name: name.trim(), email: normalizedEmail, passwordHash, wellness })
+      : { id: crypto.randomUUID(), name: name.trim(), email: normalizedEmail, passwordHash, wellness: wellness };
     if (!databaseReady) memoryUsers.set(normalizedEmail, user);
     const session = await issueSession(res, user);
     res.status(201).json({ ...session, storage: databaseReady ? "database" : "temporary" });
@@ -259,26 +269,191 @@ app.post("/api/guide", requireAuth, async (req, res) => {
   if (!question || question.length > 2000) {
     return res.status(400).json({ message: "Write a question first (max 2000 characters)." });
   }
-  if (!process.env.GEMINI_API_KEY) {
-    return res.status(503).json({
-      message: "The AI guide is not connected yet. Add GEMINI_API_KEY to server/.env and restart the server.",
-    });
+  const reply = await getWellnessReply(question);
+  if (reply.offTopic) return res.status(400).json({ message: reply.text });
+  if (reply.error) return res.status(reply.status || 502).json({ message: reply.text });
+  res.json({ answer: reply.text });
+});
+
+const OFF_TOPIC_PATTERNS = [
+  /\b(homework|essay|assignment|write code|python|javascript|java|c\+\+)\b/i,
+  /\b(crypto|bitcoin|stock|invest|politics|election|celebrity|movie review)\b/i,
+  /\b(tell me a joke|dating advice|relationship drama|who will win)\b/i,
+  /\b(recipe for(?! healthy)|game cheat|hack account)\b/i,
+];
+
+const HEALTH_KEYWORDS = [
+  "period", "menstrual", "cycle", "cramp", "pms", "ovulation", "tampon", "pad",
+  "mood", "anxiety", "stress", "depression", "mental", "sleep", "insomnia",
+  "nutrition", "food", "eat", "hygiene", "skin", "acne", "wellness", "health",
+  "exercise", "workout", "bully", "self-esteem", "shecare", "symptom", "bloat",
+  "headache", "energy", "tired", "sad", "worry", "panic", "breath", "mindful",
+];
+
+function assessRelevance(message) {
+  const text = message.toLowerCase();
+  if (OFF_TOPIC_PATTERNS.some((pattern) => pattern.test(text))) return false;
+  if (HEALTH_KEYWORDS.some((word) => text.includes(word))) return true;
+  return null;
+}
+
+function fallbackWellnessReply(message) {
+  const text = message.toLowerCase();
+  if (text.includes("cramp") || text.includes("pain")) {
+    return "Gentle heat, hydration, light movement, and rest can help with common cramps. Seek medical care for sudden, severe, or worsening pain.";
   }
-  const prompt = `You are SheCARE, a warm health-education guide for teen girls. Give short, practical, age-appropriate health education. Never diagnose, never present certainty, and always advise urgent local care for emergency symptoms. User question: ${question}`;
+  if (text.includes("late") || text.includes("miss") || text.includes("period")) {
+    return "Stress, routine changes, and illness can shift a period. If pregnancy is possible or cycles stay very irregular, speak with a qualified clinician.";
+  }
+  if (text.includes("mood") || text.includes("anx") || text.includes("stress")) {
+    return "Mood shifts are common, especially around hormonal changes. Protect sleep, talk to someone you trust, and seek professional support if daily life feels hard.";
+  }
+  if (text.includes("sleep")) {
+    return "Teens often need 8–10 hours of sleep (CDC). Try a consistent bedtime, less screen time before bed, and a cool, dark room.";
+  }
+  return "I can help with menstrual health, mood, nutrition, hygiene, sleep, and general teen wellness. For emergencies or severe symptoms, contact a clinician or local emergency services.";
+}
+
+async function callGemini(prompt) {
+  const response = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${process.env.GEMINI_MODEL || "gemini-2.5-flash"}:generateContent`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-goog-api-key": process.env.GEMINI_API_KEY },
+      body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+    }
+  );
+  const payload = await response.json();
+  if (!response.ok) throw new Error(payload.error?.message || "Gemini request failed");
+  return payload.candidates?.[0]?.content?.parts?.[0]?.text || "";
+}
+
+async function getWellnessReply(message) {
+  const relevance = assessRelevance(message);
+  if (relevance === false) {
+    return {
+      offTopic: true,
+      text: "I can only help with teen health and wellness topics — like periods, mood, sleep, nutrition, hygiene, and self-care. Try asking about something health-related!",
+    };
+  }
+
+  if (!process.env.GEMINI_API_KEY) {
+    return { text: fallbackWellnessReply(message) };
+  }
+
+  const prompt = `You are SheCARE Guide, a warm health-education assistant for teen girls.
+
+STRICT RULES:
+- ONLY answer questions about: menstrual/cycle health, mental wellness, nutrition, physical activity, hygiene, sleep, bullying/cyberbullying (coping), self-esteem, stress, and using SheCARE features.
+- If the question is off-topic (homework, coding, politics, entertainment, relationships as gossip, etc.), reply with EXACTLY: OFF_TOPIC
+- Never diagnose. Never claim certainty. Encourage professional care for emergencies or severe symptoms.
+- Keep answers under 120 words, friendly, and age-appropriate.
+- Cite general guidance (e.g. WHO, CDC) only when accurate; do not invent statistics.
+
+User question: ${message}`;
+
   try {
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${process.env.GEMINI_MODEL || "gemini-2.5-flash"}:generateContent`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "x-goog-api-key": process.env.GEMINI_API_KEY },
-        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
-      }
-    );
-    const payload = await response.json();
-    if (!response.ok) throw new Error(payload.error?.message || "Gemini request failed");
-    res.json({ answer: payload.candidates?.[0]?.content?.parts?.[0]?.text || "I couldn't create a response right now." });
+    const answer = await callGemini(prompt);
+    if (answer.trim() === "OFF_TOPIC" || answer.trim().startsWith("OFF_TOPIC")) {
+      return {
+        offTopic: true,
+        text: "I can only help with teen health and wellness topics — like periods, mood, sleep, nutrition, hygiene, and self-care. Try asking about something health-related!",
+      };
+    }
+    return { text: answer || fallbackWellnessReply(message) };
   } catch (error) {
-    res.status(502).json({ message: "The guide is temporarily unavailable." });
+    console.error("Gemini error:", error.message);
+    return { text: fallbackWellnessReply(message) };
+  }
+}
+
+app.post("/api/chat", requireAuth, async (req, res) => {
+  const message = req.body.message?.trim();
+  if (!message || message.length > 500) {
+    return res.status(400).json({ message: "Please enter a message (max 500 characters)." });
+  }
+  const reply = await getWellnessReply(message);
+  if (reply.offTopic) return res.status(400).json({ message: reply.text });
+  res.json({ reply: reply.text });
+});
+
+app.post("/api/monthly-report", requireAuth, async (req, res) => {
+  try {
+    const wellness = req.body.wellness && typeof req.body.wellness === "object"
+      ? req.body.wellness
+      : req.user.wellness || {};
+    const cycle = wellness.cycle || {};
+    const checkIns = Array.isArray(wellness.checkIns) ? wellness.checkIns : [];
+    const reminders = Array.isArray(wellness.reminders) ? wellness.reminders : [];
+    const now = new Date();
+    const monthLabel = now.toLocaleString("en-IN", { month: "long", year: "numeric" });
+
+    const symptomCounts = {};
+    checkIns.forEach((entry) => {
+      (entry.symptoms || []).forEach((symptom) => {
+        symptomCounts[symptom] = (symptomCounts[symptom] || 0) + 1;
+      });
+    });
+
+    const topSymptoms = Object.entries(symptomCounts)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([name, count]) => `${name} (${count}×)`);
+
+    const report = {
+      month: monthLabel,
+      cycleLength: cycle.length || 28,
+      checkInsLogged: checkIns.length,
+      activeReminders: reminders.filter((item) => item.enabled).length,
+      topSymptoms,
+      summary: "",
+    };
+
+    if (process.env.GEMINI_API_KEY) {
+      const prompt = `Write a warm, brief monthly wellness summary (max 100 words) for a teen using SheCARE.
+Data: ${JSON.stringify(report)}. Mention patterns gently, encourage self-care, no diagnosis.`;
+      try {
+        report.summary = await callGemini(prompt);
+      } catch {
+        report.summary = buildLocalReportSummary(report);
+      }
+    } else {
+      report.summary = buildLocalReportSummary(report);
+    }
+
+    res.json({ report });
+  } catch (error) {
+    console.error("Monthly report error:", error.message);
+    res.status(500).json({ message: "Could not generate your monthly report." });
+  }
+});
+
+function buildLocalReportSummary(report) {
+  const parts = [`Here's your ${report.month} snapshot.`];
+  if (report.checkInsLogged) parts.push(`You logged ${report.checkInsLogged} check-in(s).`);
+  if (report.topSymptoms.length) parts.push(`Most noted: ${report.topSymptoms.join(", ")}.`);
+  parts.push("Patterns are information, not judgement — keep noticing what helps you feel better.");
+  return parts.join(" ");
+}
+
+app.post("/api/feedback", async (req, res) => {
+  try {
+    const rating = Number(req.body.rating);
+    const message = req.body.message?.trim();
+    const category = req.body.category?.trim().slice(0, 40) || "general";
+    if (!rating || rating < 1 || rating > 5 || !message || message.length > 1000) {
+      return res.status(400).json({ message: "Please include a 1–5 rating and feedback message." });
+    }
+    const entry = { rating, message, category, createdAt: new Date() };
+    if (databaseReady) {
+      await Feedback.create(entry);
+    } else {
+      memoryFeedback.push(entry);
+    }
+    res.status(201).json({ ok: true, message: "Thank you for your feedback!" });
+  } catch (error) {
+    console.error("Feedback error:", error.message);
+    res.status(500).json({ message: "Could not save feedback." });
   }
 });
 

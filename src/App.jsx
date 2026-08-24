@@ -1,6 +1,8 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import SiteHeader from "./components/SiteHeader";
+import SiteFooter from "./components/SiteFooter";
+import WellnessChatbot from "./components/WellnessChatbot";
 import RouteErrorBoundary from "./components/RouteErrorBoundary";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PageLoader from "./components/PageLoader";
@@ -16,6 +18,7 @@ const DiagnosisScreener = lazy(() => import("./pages/DiagnosisScreener"));
 const PhysicalHealth = lazy(() => import("./pages/PhysicalHealth"));
 const MythVsFact = lazy(() => import("./pages/MythVsFact"));
 const PersonalHygiene = lazy(() => import("./pages/PersonalHygiene"));
+const Feedback = lazy(() => import("./pages/Feedback"));
 
 function App() {
   const location = useLocation();
@@ -41,9 +44,12 @@ function App() {
             <Route path="/physical-health" element={<PhysicalHealth />} />
             <Route path="/myth-vs-fact" element={<MythVsFact />} />
             <Route path="/personal-hygiene" element={<PersonalHygiene />} />
+            <Route path="/feedback" element={<Feedback />} />
           </Routes>
         </Suspense>
       </RouteErrorBoundary>
+      {!minimalPage && <SiteFooter />}
+      <WellnessChatbot />
     </div>
   );
 }

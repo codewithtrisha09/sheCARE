@@ -392,14 +392,6 @@ mental: {
       <div className="ambient-blur blur-pink" style={{ top: "-50px", left: "-100px" }}></div>
       <div className="ambient-blur blur-purple" style={{ bottom: "300px", right: "-100px" }}></div>
 
-      {/* NAVIGATION */}
-      <nav className="navbar">
-        <Link to="/" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "12px" }}>
-          <h2 style={{ margin: 0, color: "#f4f2f6" }}>← SheCARE</h2>
-        </Link>
-        <h3 className="page-title">Myths vs Facts</h3>
-      </nav>
-
       {/* HERO SECTION */}
       <header className="mvf-hero">
         <div className="mvf-badge">Module 1.5 • Myth Busting Archive</div>
