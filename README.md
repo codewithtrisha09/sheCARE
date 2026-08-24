@@ -1,106 +1,208 @@
 # SheCARE
 
-Empowering teen girls through health education and wellness.
+**A menstrual health and wellness platform designed to make reliable health education more accessible to adolescent girls.**
 
-## About the Project
+SheCARE is a full-stack health-tech web application that combines educational resources with personalized wellness tools. It provides a safe, user-friendly space where users can learn about menstrual health, track their cycles and symptoms, save wellness information, and access AI-assisted educational support.
 
-SheCARE is a health-tech web application designed to promote menstrual health awareness and provide accessible educational resources for adolescent girls. The platform aims to create a safe, informative, and user-friendly space where users can learn about menstrual wellness through engaging content and thoughtful design.
+## Features
 
-## What You Can Do
-
-- Modern and responsive user interface
-- Health and menstrual wellness information pages
-- Educational blog and content modules
-- Intuitive navigation and user experience
-- Custom branding and design
-- Animated welcome experience and responsive navigation
-- Create an account and sign in securely with JWT authentication
-- Personal cycle tracker with symptom check-ins and period estimates
-- Save wellness reminders and cycle information to your account
-- Personalised Care Space dashboard
-- Gemini-powered wellness guide (optional server-side integration)
-- Medical wording simplifier with a clear educational disclaimer
+* Menstrual health education and wellness resources
+* Educational articles and blog content
+* Personal cycle tracker
+* Symptom check-ins and period estimates
+* Personalized Care Space dashboard
+* Wellness reminders and saved cycle information
+* Secure account creation and login with JWT authentication
+* Gemini-powered AI wellness guide
+* Medical wording simplifier with an educational disclaimer
+* Responsive and modern user interface
+* Custom branding and animated user experience
 
 ## Tech Stack
 
 ### Frontend
 
-- React.js
-- Vite
-- HTML5
-- CSS3
-- JavaScript (ES6+)
+* React.js
+* Vite
+* JavaScript (ES6+)
+* HTML5
+* CSS3
+
+### Backend
+
+* Node.js
+* Express.js
+* JWT Authentication
+
+### Database
+
+* MongoDB Atlas
+
+### AI Integration
+
+* Google Gemini API
+
+## Architecture
+
+```text
+                         ┌──────────────────────┐
+                         │       SheCARE        │
+                         │    React + Vite      │
+                         │      Frontend        │
+                         └──────────┬───────────┘
+                                    │
+                              HTTP / REST API
+                                    │
+                         ┌──────────▼───────────┐
+                         │    Express Server     │
+                         │       Node.js         │
+                         │                       │
+                         │  JWT Authentication   │
+                         │  API Routes           │
+                         │  AI Integration       │
+                         └──────┬─────────┬──────┘
+                                │         │
+                    ┌───────────▼───┐   ┌─▼──────────────┐
+                    │ MongoDB Atlas │   │  Gemini API    │
+                    │               │   │                │
+                    │ User & Cycle  │   │ AI Wellness    │
+                    │ Data          │   │ Guide          │
+                    └───────────────┘   └────────────────┘
+```
 
 ## Project Status
 
-Work in progress, with a functional frontend and an Express API foundation. The application can run without paid services: it uses temporary server storage by default, and can persist user data with MongoDB Atlas' free tier when configured.
+SheCARE is currently **a work in progress**.
+
+The application has a functional React frontend and an Express API foundation. It can run without paid services using temporary server-side storage by default, while MongoDB Atlas can be configured for persistent data storage.
 
 ### Completed
 
-- React + Vite setup
-- Landing page design
-- Responsive navigation bar
-- Menstrual health information section
-- Educational blog/content module
-- Custom branding and logo
-- Responsive user interface
+* React + Vite project setup
+* Landing page and custom branding
+* Responsive navigation
+* Menstrual health information section
+* Educational blog/content module
+* Responsive user interface
+* User registration and login
+* JWT-based authentication
+* Personal cycle tracking
+* Symptom check-ins
+* Personalized Care Space dashboard
+* Wellness reminders
+* Server-side Gemini integration
+* Medical wording simplifier
 
 ### In Progress
 
-- Push/email reminder delivery
-- Secure production deployment and password reset flow
-- Expanded symptom trends and clinician-friendly export
+* Push and email reminder delivery
+* Password reset flow
+* Production deployment
+* Expanded symptom and cycle analytics
+* Clinician-friendly data export
 
-## Installation
+## Getting Started
 
-Clone the repository:
+### Prerequisites
+
+* Node.js
+* npm
+* MongoDB Atlas account (optional)
+
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/codewithtrisha09/sheCARE.git
 ```
 
-Navigate to the project folder:
+### 2. Navigate to the Project
 
 ```bash
 cd sheCARE
 ```
 
-Install dependencies:
+### 3. Install Dependencies
 
 ```bash
 npm install
 ```
 
-Run the development server:
+## Running the Application
 
-```bash
-npm run dev
+The frontend and backend run in separate terminals during development.
+
+### 1. Configure the Server
+
+Create your environment file from the provided example.
+
+**Windows PowerShell:**
+
+```powershell
+Copy-Item server/.env.example server/.env
 ```
 
-## Run the API and Authentication
+Configure the environment variables in `server/.env`:
 
-The frontend and API run in separate terminals during development.
+```env
+JWT_SECRET=your_long_random_secret
+MONGODB_URI=your_mongodb_connection_string
+GEMINI_API_KEY=your_gemini_api_key
+```
 
-1. Copy [`server/.env.example`](server/.env.example) to `server/.env`.
-2. Set a long `JWT_SECRET`. Add your free MongoDB Atlas connection string to `MONGODB_URI` if you want data to persist after restarting the API.
-3. Start the API:
+`MONGODB_URI` and `GEMINI_API_KEY` are optional depending on the features you want to use.
+
+### 2. Start the API
 
 ```bash
 npm run server
 ```
 
-4. In a second terminal, start Vite:
+### 3. Start the Frontend
+
+Open a second terminal:
 
 ```bash
 npm run dev
 ```
 
-To enable the AI guide, add `GEMINI_API_KEY` to `server/.env`. The key is used only by the Express server and is never sent to the browser.
+Vite will display the local development URL in the terminal.
+
+## Environment Variables
+
+| Variable         | Required | Purpose                            |
+| ---------------- | -------- | ---------------------------------- |
+| `JWT_SECRET`     | Yes      | Signs authentication tokens        |
+| `MONGODB_URI`    | Optional | Enables persistent MongoDB storage |
+| `GEMINI_API_KEY` | Optional | Enables the AI wellness guide      |
+
+The Gemini API key is used only by the Express server and is never exposed to the browser.
+
+> **Security:** Never commit your `.env` file or API keys to GitHub. Keep sensitive values in environment variables and ensure `.env` is included in `.gitignore`.
+
+## Privacy & Security
+
+* JWT-based authentication
+* Server-side API key handling
+* Environment variables for sensitive configuration
+* No API keys committed to the repository
+* MongoDB used for persistent user data when configured
+
+SheCARE is an **educational wellness platform and is not a substitute for professional medical advice, diagnosis, or treatment.**
+
+## Future Improvements
+
+* Personalized cycle insights
+* Detailed symptom analytics
+* Push and email notifications
+* Password recovery
+* Improved accessibility
+* Production deployment
+* Clinician-friendly reports and exports
+* Expanded educational content
 
 ## Author
 
-Trisha Shetty
-
+**Trisha Shetty**
 B.Tech CSE (AI & ML)
 
-Building technology-driven solutions to improve health awareness and accessibility for young women.
+Building technology-driven solutions at the intersection of **AI, software engineering, and healthcare accessibility**.
